@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vardiya Analiz Aracı</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="file"],
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Excel Analiz Aracı</h2>
+
+    <!-- gizli iframe -->
+    <iframe name="download_iframe" style="display:none;"></iframe>
+
+    <form action="/process" method="post" enctype="multipart/form-data" target="download_iframe">
+        <div class="form-group">
+            <label>Vardiya Excel:</label>
+            <input type="file" name="shift_file" accept=".xlsx,.xls" required>
+        </div>
+
+        <div class="form-group">
+            <label>Note Excel:</label>
+            <input type="file" name="note_file" accept=".xlsx,.xls">
+        </div>
+
+        <div class="form-group">
+            <label>Başlangıç Tarihi (opsiyonel):</label>
+            <input type="date" name="start_date">
+        </div>
+
+        <div class="form-group">
+            <label>Bitiş Tarihi (opsiyonel):</label>
+            <input type="date" name="end_date">
+        </div>
+
+        <button type="submit" onclick="setTimeout(()=>{location.reload();}, 1000);">
+            Analiz Et ve Excel İndir
+        </button>
+    </form>
+</body>
+</html>
